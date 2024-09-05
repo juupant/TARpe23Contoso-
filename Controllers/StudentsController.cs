@@ -188,5 +188,24 @@ namespace ContosoUniversity.Controllers
         {
             return _context.Students.Any(e => e.ID == id);
         }
+        public IActionResult Clone(int id)
+        {
+            var student = _context.Students.Find(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            var clonedStudent = new Student
+            {
+                LastName = student.LastName,
+                FirstMidName = student.FirstMidName,
+                EnrollmentDate = student.EnrollmentDate
+                
+            };
+            _context.Students.Add(clonedStudent);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
     } 
 }
