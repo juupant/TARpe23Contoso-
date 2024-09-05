@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SLL0WV+2LnhEsjdzyLJLjCUEEV/xlOZNQGS/L0thecfGqAMf1DmCAl0LwlgxHJ64CLKbDllxFj/RVnsSMmAabg==",
+  "dgSpecHash": "Pp2wf5/ie/jGMQ7p025De28S2wYdhZ5cw+9e8xb9VlNKRNpNwMNZFxHFGQcDFPL0BMlEtGtRLVoBj1DQfQ53/Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alan Markus\\Desktop\\folder folder\\tthk\\TARpe23Contoso-main\\TARpe23Contoso-main\\Contoso University.csproj",
+  "projectFilePath": "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\Contoso University.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alan Markus\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Alan Markus\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

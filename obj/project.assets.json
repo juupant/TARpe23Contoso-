@@ -4107,11 +4107,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alan Markus\\Desktop\\folder folder\\tthk\\TARpe23Contoso-main\\TARpe23Contoso-main\\Contoso University.csproj",
+      "projectUniqueName": "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\Contoso University.csproj",
       "projectName": "Contoso University",
-      "projectPath": "C:\\Users\\Alan Markus\\Desktop\\folder folder\\tthk\\TARpe23Contoso-main\\TARpe23Contoso-main\\Contoso University.csproj",
+      "projectPath": "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\Contoso University.csproj",
       "packagesPath": "C:\\Users\\Alan Markus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alan Markus\\Desktop\\folder folder\\tthk\\TARpe23Contoso-main\\TARpe23Contoso-main\\obj\\",
+      "outputPath": "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alan Markus\\AppData\\Roaming\\NuGet\\NuGet.Config",
