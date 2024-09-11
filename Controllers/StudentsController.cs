@@ -139,15 +139,15 @@ namespace ContosoUniversity.Controllers
 			}
 			return View(student);
 		}
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id) 
         {
-            if (id == null)
+            if (id == null) //checkib et null ei ole
             {
                 return NotFound();
             }
 
             var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            if (student == null) //checkib et null ei ole
             {
                 return NotFound();
             }
@@ -155,7 +155,7 @@ namespace ContosoUniversity.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstMidName,EnrollmentDate")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstMidName,EnrollmentDate")] Student student) //edit mis toimib, võttis liiga kaua et teha
         {
             if (id != student.ID)
             {
@@ -188,7 +188,7 @@ namespace ContosoUniversity.Controllers
         {
             return _context.Students.Any(e => e.ID == id);
         }
-        public IActionResult Clone(int id)
+        public IActionResult Clone(int id)  //clone mis toimib
         {
             var student = _context.Students.Find(id);
             if (student == null)
