@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\Contoso University.csproj": {}
+    "C:\\Users\\Alan Markus\\Source\\Repos\\TARpe23Contoso-\\Contoso University.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\Contoso University.csproj": {
+    "C:\\Users\\Alan Markus\\Source\\Repos\\TARpe23Contoso-\\Contoso University.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\Contoso University.csproj",
+        "projectUniqueName": "C:\\Users\\Alan Markus\\Source\\Repos\\TARpe23Contoso-\\Contoso University.csproj",
         "projectName": "Contoso University",
-        "projectPath": "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\Contoso University.csproj",
+        "projectPath": "C:\\Users\\Alan Markus\\Source\\Repos\\TARpe23Contoso-\\Contoso University.csproj",
         "packagesPath": "C:\\Users\\Alan Markus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alan Markus\\Source\\Repos\\ConsoleApp2\\TARpe23Contoso-\\obj\\",
+        "outputPath": "C:\\Users\\Alan Markus\\Source\\Repos\\TARpe23Contoso-\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alan Markus\\AppData\\Roaming\\NuGet\\NuGet.Config",
