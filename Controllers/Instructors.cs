@@ -119,5 +119,55 @@ namespace Contoso_University.Controllers
 
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) //checkib et null ei ole
+            {
+                return NotFound();
+            }
+
+            var instructor = await _context.Instructors.FindAsync(id);
+            if (instructor == null) //checkib et null ei ole
+            {
+                return NotFound();
+            }
+            return View(instructor);
+        }
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstMidName,EnrollmentDate")] Instructor instructor) //edit 
+        {
+            if (id != instructor.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(instructor);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!InstructorExists(instructor.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(instructor);
+        }
+        private bool InstructorExists(int id)
+        {
+            return _context.Instructors.Any(e => e.ID == id);
+        }
+        
     }
 }
