@@ -168,6 +168,24 @@ namespace Contoso_University.Controllers
         {
             return _context.Instructors.Any(e => e.ID == id);
         }
-        
+        public IActionResult Clone(int id)  //clone 
+        {
+            var instructor = _context.Instructors.Find(id);
+            if (instructor == null)
+            {
+                return NotFound();
+            }
+            var clonedInstructor = new Instructor
+            {
+                LastName = instructor.LastName,
+                FirstMidName = instructor.FirstMidName,
+                HireDate = instructor.HireDate
+
+            };
+            _context.Instructors.Add(clonedInstructor);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
