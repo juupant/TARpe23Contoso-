@@ -75,14 +75,14 @@ namespace ContosoUniversity.Controllers
         }
         */
 
-        // Create get, haarab vaatest andmed, mida create meetod vajab.
+        // Create get, võtab vaatest andmed, mida create meetod vajab.
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // Create meetod, sisestab andmebaasi uue õpilase. Insert new student into database
+        // Create meetod, sisestab andmebaasi uue õpilase.
 
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -70,6 +70,7 @@ namespace Contoso_University.Controllers
 
             }
             */
+
             //ModelState.Remove(selectedCourses);
             //ModelState.Remove();
             if (ModelState.IsValid)
@@ -81,6 +82,7 @@ namespace Contoso_University.Controllers
             //PopulateAssignedCourseData(instructor); // uuendab instructori juures olevaid kursuseid
             return View(instructor);
         }
+
 
         private void PopulateAssignedCourseData(Instructor instructor)
         {
@@ -119,73 +121,56 @@ namespace Contoso_University.Controllers
 
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null) //checkib et null ei ole
-            {
-                return NotFound();
-            }
 
-            var instructor = await _context.Instructors.FindAsync(id);
-            if (instructor == null) //checkib et null ei ole
-            {
-                return NotFound();
-            }
-            return View(instructor);
-        }
-        [HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstMidName,EnrollmentDate")] Instructor instructor) //edit 
-        {
-            if (id != instructor.ID)
-            {
-                return NotFound();
-            }
 
-            if (ModelState.IsValid)
+        public async Task<IActionResult> Clone(int? ID)
+        {
+            if (ID == null)
             {
-                try
-                {
-                    _context.Update(instructor);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!InstructorExists(instructor.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            return View(instructor);
-        }
-        private bool InstructorExists(int id)
-        {
-            return _context.Instructors.Any(e => e.ID == id);
-        }
-        public IActionResult Clone(int id)  //clone 
-        {
-            var instructor = _context.Instructors.Find(id);
+            var instructor = _context.Instructors.FirstOrDefault(m => m.ID == ID);
             if (instructor == null)
             {
                 return NotFound();
             }
-            var clonedInstructor = new Instructor
+            var instructorClone = new Instructor
             {
                 LastName = instructor.LastName,
                 FirstMidName = instructor.FirstMidName,
-                HireDate = instructor.HireDate
+                HireDate = instructor.HireDate,
 
             };
-            _context.Instructors.Add(clonedInstructor);
-            _context.SaveChanges();
 
-            return RedirectToAction(nameof(Index));
+            _context.Add(instructorClone);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([Bind("ID,LastName,FirstMidName,HireDate")] Instructor instructor)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingInstructor = _context.Instructors.AsNoTracking().FirstOrDefault(m => m.ID == instructor.ID);
+
+                if (existingInstructor == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Instructors.Update(instructor);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(instructor);
+        }
+
     }
 }
