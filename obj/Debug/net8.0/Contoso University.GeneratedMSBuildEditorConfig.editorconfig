@@ -18,8 +18,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Alan Markus\Source\Repos\TARpe23Contoso-
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Alan Markus/Source/Repos/TARpe23Contoso-/Views/Courses/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xEZXRhaWxzLmNzaHRtbA==
+[C:/Users/Alan Markus/Source/Repos/TARpe23Contoso-/Views/Courses/DetailsDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xEZXRhaWxzRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Alan Markus/Source/Repos/TARpe23Contoso-/Views/Courses/Index.cshtml]

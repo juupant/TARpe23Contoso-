@@ -1,6 +1,7 @@
 ﻿using Contoso_University.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Contoso_University.Models;
 
 namespace Contoso_University.Controllers
 {
@@ -51,5 +52,28 @@ namespace Contoso_University.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Clone(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var course = await _context.Courses.FindAsync(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            var biggestCourseId = _context.Courses.OrderByDescending(m => m.CourseId).First();
+            var clonedCourse = new Course
+            {
+                CourseId = biggestCourseId.CourseId + 1,
+                Title = course.Title,
+                Credits = course.Credits,
+            };
+            _context.Add(clonedCourse);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
     }
 }
