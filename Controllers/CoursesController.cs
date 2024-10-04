@@ -74,6 +74,49 @@ namespace Contoso_University.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public async Task<IActionResult> CreateEdit(int? id)
+        {
+            if (id == null)
+            {
+                ViewBag.Title = "Create";
+                ViewBag.Description = "Create a new course";
+                return View();
+            }
+            var course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseId == id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Title = "Edit";
+            ViewBag.Description = "Edit a course";
+            return View(course);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateEdit(Course course)
+        {
+            if (ModelState.IsValid)
+            {
+                if (course.CourseId == 0)
+                {
+                    var biggestCourseId = _context.Courses.OrderByDescending(m => m.CourseId).First();
+                    course.CourseId = biggestCourseId.CourseId + 1;
+                    _context.Add(course);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                var existingCourse = _context.Courses.AsNoTracking().FirstOrDefault(m => m.CourseId == course.CourseId);
+                if (existingCourse == null)
+                {
+                    return NotFound();
+                }
+                _context.Update(course);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+
+            }
+            return View(course);
+        }
 
     }
 }
