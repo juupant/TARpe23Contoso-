@@ -1,4 +1,4 @@
-﻿@model Contoso_University.Models.Instructor
+﻿@model Contoso_University.Models.Instructor  //instructors delete view
 
 @{
     ViewData["Title"] = "Delete";
@@ -37,6 +37,6 @@
     </dl>
     <form asp-action="Delete">
         <input type="hidden" asp-for="ID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> | <a asp-action="Index">Cancel</a>
+        <input type="submit" value="Delete" class="btn btn-primary" /> | <a asp-action="Index">Cancel</a>
     </form>
 </div>

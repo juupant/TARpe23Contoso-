@@ -96,7 +96,7 @@ namespace Contoso_University.Controllers
             ViewData["Courses"] = vm;
 
         }
-        public async Task<IActionResult> Delete(int? ID)
+        public async Task<IActionResult> Delete(int? ID) //instructori kustutamine
         {
             if (ID == null)
             {
@@ -111,7 +111,7 @@ namespace Contoso_University.Controllers
             return View(instructor);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")] //instructori kustutamine
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int ID)
         {
