@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<Contoso_University.Models.Student>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Õpilased";
+
 }
-
 <h1>Õpilaste Index</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -38,10 +36,10 @@
                     @Html.DisplayFor(modelItem => item.EnrollmentDate)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> 
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> 
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>  
-                    <a asp-action="Clone" asp-route-id="@item.ID">Clone</a>  
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="Clone" asp-route-id="@item.ID">Clone</a>
                 </td>
             </tr>
         }

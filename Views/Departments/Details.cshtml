@@ -1,6 +1,6 @@
 ﻿@model Contoso_University.Models.Department
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Department";
 }
 
 <h1>Details</h1>
@@ -20,9 +20,10 @@
         <dt> @Html.DisplayFor(m => m.StartDate)</dt>
         <dt>
             @{
-                if(Model.TotalInstructors != null)
+                if (Model.TotalInstructors != null)
                 {
-                    @Html.DisplayNameFor(m => m.TotalInstructors);
+                    @Html.DisplayNameFor(m => m.TotalInstructors)
+                    ;
                 }
             }
         </dt>
@@ -30,7 +31,8 @@
             @{
                 if (Model.TotalInstructors != null)
                 {
-                    @Html.DisplayFor(m => m.TotalInstructors);
+                    @Html.DisplayFor(m => m.TotalInstructors)
+                    ;
                 }
             }
         </dt>

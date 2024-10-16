@@ -6,8 +6,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" >
-            <input type="hidden" asp-for="RowVersion" value="@Html.Raw("0")"/>
+        <form asp-action="Create">
+            <input type="hidden" asp-for="RowVersion" value="@Html.Raw("0")" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label asp-for="SuperImportantString" class="control-label"></label>
-                <input asp-for="SuperImportantString" class="form-control"/>
+                <input asp-for="SuperImportantString" class="form-control" />
                 <span asp-validation-for="SuperImportantString" class="text-danger"></span>
             </div>
 
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary"/>
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
         <a asp-action="Index" class="btn btn-outline-primary">Back</a>

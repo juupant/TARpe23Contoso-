@@ -19,16 +19,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var department in Model)
+        @foreach (var department in Model)
         {
             <tr>
                 <td> @Html.DisplayFor(modelItem => department.Name) </td>
+                <td> @Html.DisplayFor(modelItem => department.Administrator.FullName) </td>
                 <td> @Html.DisplayFor(modelItem => department.SuperImportantString) </td>
                 <td> @Html.DisplayFor(modelItem => department.Budget) </td>
                 <td> @Html.DisplayFor(modelItem => department.StartDate) </td>
                 <td> @Html.DisplayFor(modelItem => department.RowVersion) </td>
                 <td>
-                    <a asp-action="Details" asp-route-id = "@department.DepartmentID" class="btn btn-dark">Details</a>
+                    <a asp-action="Details" asp-route-id="@department.DepartmentID" class="btn btn-dark">Details</a>
                     <a asp-action="Edit" asp-route-id="@department.DepartmentID" class="btn btn-dark">Edit </a>
                     <a asp-action="BaseOn" asp-route-id="@department.DepartmentID" class="btn btn-dark">Base On </a>
                     <a asp-action="Edit Administrator" asp-route-id="@department.DepartmentID" class="btn btn-dark">Edit Administrator</a>

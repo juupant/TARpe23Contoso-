@@ -11,7 +11,7 @@
             @{
                 if (ViewBag.Title == "Edit")
                 {
-                    <input type="hidden" asp-for="CourseId" value="@Model.CourseId"/>
+                    <input type="hidden" asp-for="CourseId" value="@Model.CourseId" />
                 }
             }
             <div class="form-group">
@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="@ViewBag.Title" class="btn btn-primary"/>
+                <input type="submit" value="@ViewBag.Title" class="btn btn-primary" />
             </div>
         </form>
         <a asp-action="Index" class="btn btn-outline-primary">Back</a>

@@ -4,7 +4,7 @@
 }
 <h1>Courses</h1>
 <p>
-    <a asp-action="Create">Create a new course</a>
+    <a asp-action="CreateEdit">Create a new course</a>
 </p>
 <table class="table">
     <thead>
@@ -23,11 +23,11 @@
                 <td> @Html.DisplayFor(modelItem => course.Title) </td>
                 <td> @Html.DisplayFor(modelItem => course.Credits) </td>
                 <td>
-                    <a asp-action="DetailsDelete" asp-route-id="@course.CourseId" asp-route-name="Details" class="btn btn-primary">Details</a>
-                    <a asp-action="CreateEdit" asp-route-id="@course.CourseId" class="btn btn-primary">Edit</a>
-                    <a asp-action="DetailsDelete" asp-route-id="@course.CourseId" asp-route-name="Delete" class="btn btn-primary">Delete</a>
+                    <a asp-action="DetailsDelete" asp-route-id="@course.CourseId" asp-route-name="Details" class="btn btn-dark">Details</a>
+                    <a asp-action="DetailsDelete" asp-route-id="@course.CourseId" asp-route-name="Delete" class="btn btn-dark">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
+
 </table>

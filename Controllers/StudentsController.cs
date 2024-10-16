@@ -3,7 +3,7 @@ using Contoso_University.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ContosoUniversity.Controllers
+namespace Contoso_University.Controllers
 {
     public class StudentsController : Controller
     {

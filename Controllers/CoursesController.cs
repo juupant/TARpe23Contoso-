@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Contoso_University.Models;
+using System.ComponentModel;
 
 namespace Contoso_University.Controllers
 {
@@ -16,7 +17,7 @@ namespace Contoso_University.Controllers
         {
             return View(await _context.Courses.ToListAsync());
         }
-        [HttpGet, ActionName("Details")]
+        [HttpGet, ActionName("DetailsDelete")]
         public async Task<IActionResult> Details(int? id, string name)
         {
             if (id == null)
@@ -93,28 +94,24 @@ namespace Contoso_University.Controllers
             return View(course);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateEdit(Course course)
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateEdit(Course course)
         {
             if (ModelState.IsValid)
             {
                 if (course.CourseId == 0)
                 {
-                    var biggestCourseId = _context.Courses.OrderByDescending(m => m.CourseId).First();
-                    course.CourseId = biggestCourseId.CourseId + 1;
-                    _context.Add(course);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    _context.Courses.Add(course); 
                 }
-                var existingCourse = _context.Courses.AsNoTracking().FirstOrDefault(m => m.CourseId == course.CourseId);
-                if (existingCourse == null)
+                else
                 {
-                    return NotFound();
+                    _context.Courses.Update(course); 
                 }
-                _context.Update(course);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
 
+                _context.SaveChanges(); 
+                return RedirectToAction("Index");
             }
+
             return View(course);
         }
 
