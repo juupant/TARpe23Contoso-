@@ -1,1 +1,48 @@
-﻿
+﻿@model Contoso_University.Models.Department
+@{
+    ViewData["Title"] = "Department";
+}
+
+<h1>Details</h1>
+<div>
+    <h2>Department</h2>
+    <hr />
+    <dl class="row">
+        <dt> @Html.DisplayNameFor(m => m.Name)</dt>
+        <dt> @Html.DisplayFor(m => m.Name)</dt>
+        <dt> @Html.DisplayNameFor(m => m.Administrator)</dt>
+        <dt> @Html.DisplayFor(m => m.Administrator.FullName)</dt>
+        <dt> @Html.DisplayNameFor(m => m.SuperImportantString)</dt>
+        <dt> @Html.DisplayFor(m => m.SuperImportantString)</dt>
+        <dt> @Html.DisplayNameFor(m => m.Budget)</dt>
+        <dt> @Html.DisplayFor(m => m.Budget)</dt>
+        <dt> @Html.DisplayNameFor(m => m.StartDate)</dt>
+        <dt> @Html.DisplayFor(m => m.StartDate)</dt>
+        <dt>
+            @{
+                if (Model.TotalInstructors != null)
+                {
+                    @Html.DisplayNameFor(m => m.TotalInstructors)
+                    ;
+                }
+            }
+        </dt>
+        <dt>
+            @{
+                if (Model.TotalInstructors != null)
+                {
+                    @Html.DisplayFor(m => m.TotalInstructors)
+                    ;
+                }
+            }
+        </dt>
+
+    </dl>
+</div>
+
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="@Model.DepartmentID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> | <a asp-action="Index">Cancel</a>
+    </form>
+</div>
