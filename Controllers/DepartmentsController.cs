@@ -55,7 +55,42 @@ namespace Contoso_University.Controllers
             ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName", department.InstructorID);
             return View(department);
         }
-        
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            string query = "SELECT * FROM Departments WHERE DepartmentID = {0}";
+            var department = await _context.Departments.FromSqlRaw(query, id).Include(d => d.Administrator).AsNoTracking().FirstOrDefaultAsync();
+            if (department == null)
+            {
+                return NotFound();
+            }
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName");
+            return View(department);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([Bind("DepartmentID,InstructorID,Name,Budget,StartDate,SuperImportantString")] Department department)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingDepartment = _context.Departments.AsNoTracking().FirstOrDefault(m => m.DepartmentID == department.DepartmentID);
+
+                if (existingDepartment == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Departments.Update(department);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName");
+            return View(department);
+        }
 
 
 
