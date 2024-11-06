@@ -91,7 +91,30 @@ namespace Contoso_University.Controllers
             ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName");
             return View(department);
         }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            string query = "SELECT * FROM Departments WHERE DepartmentID = {0}";
+            var department = await _context.Departments.FromSqlRaw(query, id).Include(d => d.Administrator).AsNoTracking().FirstOrDefaultAsync();
+            if (department == null)
+            {
+                return NotFound();
+            }
+            return View(department);
+        }
 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int ID)
+        {
+            var department = await _context.Departments.FindAsync(ID);
+            _context.Departments.Remove(department);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
 
 
 
