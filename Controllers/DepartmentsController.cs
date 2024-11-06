@@ -130,7 +130,34 @@ namespace Contoso_University.Controllers
             ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName");
             return View(department);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> MakeAndDeleteOld([Bind("DepartmentID,Name,Budget,StartDate,RowVersion,InstructorID,SuperImportantString")] Department department)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingDepartment = await _context.Departments.FindAsync(department.DepartmentID);
 
+                if (existingDepartment == null)
+                {
+                    return NotFound();
+                }
+                var departmentClone = new Department
+                {
+                    Name = department.Name,
+                    Budget = department.Budget,
+                    StartDate = department.StartDate,
+                    SuperImportantString = department.SuperImportantString,
+                    InstructorID = department.InstructorID
+                };
+
+                _context.Remove(existingDepartment);
+                _context.Add(departmentClone);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(department);
+        }
 
 
 
